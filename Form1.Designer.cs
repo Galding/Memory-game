@@ -50,6 +50,7 @@
             this.dispatch = new System.Windows.Forms.Button();
             this.reveal = new System.Windows.Forms.Button();
             this.cardList = new System.Windows.Forms.ImageList(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb1_0_0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2_0_1)).BeginInit();
@@ -157,7 +158,7 @@
             this.picture7_1_3.Size = new System.Drawing.Size(118, 116);
             this.picture7_1_3.TabIndex = 1;
             this.picture7_1_3.TabStop = false;
-            this.picture7_1_3.Tag = "8";
+            this.picture7_1_3.Tag = "5";
             this.picture7_1_3.Click += new System.EventHandler(this.OnPictureBoxClick);
             // 
             // pb7_1_2
@@ -168,7 +169,7 @@
             this.pb7_1_2.Size = new System.Drawing.Size(116, 116);
             this.pb7_1_2.TabIndex = 1;
             this.pb7_1_2.TabStop = false;
-            this.pb7_1_2.Tag = "7";
+            this.pb7_1_2.Tag = "6";
             this.pb7_1_2.Click += new System.EventHandler(this.OnPictureBoxClick);
             // 
             // pb6_1_1
@@ -179,7 +180,7 @@
             this.pb6_1_1.Size = new System.Drawing.Size(116, 116);
             this.pb6_1_1.TabIndex = 1;
             this.pb6_1_1.TabStop = false;
-            this.pb6_1_1.Tag = "6";
+            this.pb6_1_1.Tag = "7";
             this.pb6_1_1.Click += new System.EventHandler(this.OnPictureBoxClick);
             // 
             // pb5_1_0
@@ -190,7 +191,7 @@
             this.pb5_1_0.Size = new System.Drawing.Size(116, 116);
             this.pb5_1_0.TabIndex = 1;
             this.pb5_1_0.TabStop = false;
-            this.pb5_1_0.Tag = "5";
+            this.pb5_1_0.Tag = "8";
             this.pb5_1_0.Click += new System.EventHandler(this.OnPictureBoxClick);
             // 
             // pb8_2_0
@@ -245,7 +246,7 @@
             this.pb15_3_3.Size = new System.Drawing.Size(118, 118);
             this.pb15_3_3.TabIndex = 1;
             this.pb15_3_3.TabStop = false;
-            this.pb15_3_3.Tag = "16";
+            this.pb15_3_3.Tag = "13";
             this.pb15_3_3.Click += new System.EventHandler(this.OnPictureBoxClick);
             // 
             // pb14_3_2
@@ -256,7 +257,7 @@
             this.pb14_3_2.Size = new System.Drawing.Size(116, 118);
             this.pb14_3_2.TabIndex = 1;
             this.pb14_3_2.TabStop = false;
-            this.pb14_3_2.Tag = "15";
+            this.pb14_3_2.Tag = "14";
             this.pb14_3_2.Click += new System.EventHandler(this.OnPictureBoxClick);
             // 
             // pb13_3_1
@@ -267,7 +268,7 @@
             this.pb13_3_1.Size = new System.Drawing.Size(116, 118);
             this.pb13_3_1.TabIndex = 1;
             this.pb13_3_1.TabStop = false;
-            this.pb13_3_1.Tag = "14";
+            this.pb13_3_1.Tag = "15";
             this.pb13_3_1.Click += new System.EventHandler(this.OnPictureBoxClick);
             // 
             // pb12_3_0
@@ -278,7 +279,7 @@
             this.pb12_3_0.Size = new System.Drawing.Size(116, 118);
             this.pb12_3_0.TabIndex = 1;
             this.pb12_3_0.TabStop = false;
-            this.pb12_3_0.Tag = "13";
+            this.pb12_3_0.Tag = "16";
             this.pb12_3_0.Click += new System.EventHandler(this.OnPictureBoxClick);
             // 
             // dispatch
@@ -346,6 +347,11 @@
             this.cardList.Images.SetKeyName(37, "Pompier.jpg");
             this.cardList.Images.SetKeyName(38, "Serveur.jpg");
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -400,5 +406,6 @@
         private System.Windows.Forms.Button dispatch;
         private System.Windows.Forms.Button reveal;
         private System.Windows.Forms.ImageList cardList;
+        private System.Windows.Forms.Timer timer1;
     }
 }

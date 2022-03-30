@@ -14,7 +14,11 @@ namespace Memory_Game
             List<int> result = new List<int>();
             for (int i = 0; i < listSize / 2; i++)
             {
-                int ranValue = random.Next(maxBound);
+                int ranValue;
+                do
+                {
+                    ranValue = random.Next(maxBound) + 1;
+                } while (result.Contains(ranValue));
                 result.Add(ranValue);
                 result.Add(ranValue);
             }
