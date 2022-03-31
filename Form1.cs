@@ -19,6 +19,7 @@ namespace Memory_Game
 
         int firstReturnedCardIndex = -1;
         int secondReturnedCardIndex = -1;
+        int resolutionTime = 0;
 
         public Form1()
         {
@@ -46,6 +47,8 @@ namespace Memory_Game
                 pb = (PictureBox)tableLayoutPanel1.Controls[i];
                 pb.Image = cardList.Images[0];
             }
+            timeCounter.Start();
+
         }
 
         private void OnPictureBoxClick(object sender, EventArgs e)
@@ -90,8 +93,12 @@ namespace Memory_Game
                 firstReturnedCardIndex = -1;
                 if (foundedCards.Count == numberOfCardsOnTheBoard)
                 {
-                    MessageBox.Show("Bien joué");
+                    timeCounter.Stop();
+                    MessageBox.Show("Bien joué, temps : " + resolutionTime + " secondes");
                     isReveal = true;
+                    cardsIndex.Clear();
+                    foundedCards.Clear();
+                    resolutionTime = 0;
                 }
             }
         }
@@ -109,7 +116,6 @@ namespace Memory_Game
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
-
             PictureBox first = (PictureBox)tableLayoutPanel1.Controls[firstReturnedCardIndex];
             first.Image = cardList.Images[0];
 
@@ -117,6 +123,11 @@ namespace Memory_Game
             second.Image = cardList.Images[0];
             firstReturnedCardIndex = -1;
             secondReturnedCardIndex = -1;
+        }
+
+        private void timeCounter_Tick(object sender, EventArgs e)
+        {
+            resolutionTime++;
         }
     }
 }

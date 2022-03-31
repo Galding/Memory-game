@@ -51,6 +51,7 @@
             this.reveal = new System.Windows.Forms.Button();
             this.cardList = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timeCounter = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb1_0_0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2_0_1)).BeginInit();
@@ -352,6 +353,11 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timeCounter
+            // 
+            this.timeCounter.Interval = 1000;
+            this.timeCounter.Tick += new System.EventHandler(this.timeCounter_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -407,5 +413,6 @@
         private System.Windows.Forms.Button reveal;
         private System.Windows.Forms.ImageList cardList;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timeCounter;
     }
 }
