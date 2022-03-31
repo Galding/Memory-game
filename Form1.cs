@@ -15,6 +15,8 @@ namespace Memory_Game
 
         Boolean isReveal;
 
+        List<int> foundedCards = new List<int>();
+
         int firstReturnedCardIndex = -1;
         int secondReturnedCardIndex = -1;
 
@@ -52,30 +54,47 @@ namespace Memory_Game
             if (!isReveal)
             {
                 PictureBox currentPb = (PictureBox)sender;
-                currentPb.Image = cardList.Images[cardsIndex.ElementAt(Convert.ToInt32(currentPb.Tag) - 1)];
+                int tagValue = Convert.ToInt32(currentPb.Tag) - 1;
+                int item = cardsIndex.ElementAt(tagValue);
+                if (foundedCards.Contains(item)) return;
+                currentPb.Image = cardList.Images[item];
                 if (firstReturnedCardIndex == -1)
                 {
-                    firstReturnedCardIndex = Convert.ToInt32(currentPb.Tag) - 1;
+                    firstReturnedCardIndex = tagValue;
                 }
                 else
                 {
-                    PictureBox otherBox = (PictureBox)tableLayoutPanel1.Controls[firstReturnedCardIndex];
-                    otherBox.Image = cardList.Images[cardsIndex.ElementAt(firstReturnedCardIndex)];
-                    secondReturnedCardIndex = Convert.ToInt32(currentPb.Tag) - 1;
-                    if (firstReturnedCardIndex == secondReturnedCardIndex) return;
-                    if (cardsIndex.ElementAt(secondReturnedCardIndex) != cardsIndex.ElementAt(firstReturnedCardIndex))
-                    {
-                        timer1.Start();
-                    }
-                    else
-                    {
-                        currentPb.Image = cardList.Images[cardsIndex.ElementAt(secondReturnedCardIndex)];
-                        firstReturnedCardIndex = -1;
-                    }
+                    VeridyCardsValidity(currentPb, tagValue);
                 }
             }
         }
-
+        /**
+         * Vérifie si les deux cartes retournées sont égales ou non.
+         * Affiche un message et bloque la grille en cas de victoire
+         */
+        private void VeridyCardsValidity(PictureBox currentPb, int tagValue)
+        {
+            PictureBox otherBox = (PictureBox)tableLayoutPanel1.Controls[firstReturnedCardIndex];
+            otherBox.Image = cardList.Images[cardsIndex.ElementAt(firstReturnedCardIndex)];
+            secondReturnedCardIndex = tagValue;
+            if (firstReturnedCardIndex == secondReturnedCardIndex) return;
+            if (cardsIndex.ElementAt(secondReturnedCardIndex) != cardsIndex.ElementAt(firstReturnedCardIndex))
+            {
+                timer1.Start();
+            }
+            else
+            {
+                currentPb.Image = cardList.Images[cardsIndex.ElementAt(secondReturnedCardIndex)];
+                foundedCards.Add(cardsIndex.ElementAt(firstReturnedCardIndex));
+                foundedCards.Add(cardsIndex.ElementAt(secondReturnedCardIndex));
+                firstReturnedCardIndex = -1;
+                if (foundedCards.Count == numberOfCardsOnTheBoard)
+                {
+                    MessageBox.Show("Bien joué");
+                    isReveal = true;
+                }
+            }
+        }
 
         private void Reveal_Click(object sender, EventArgs e)
         {
